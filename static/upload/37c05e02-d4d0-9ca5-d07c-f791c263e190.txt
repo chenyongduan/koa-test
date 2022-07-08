@@ -1,0 +1,32 @@
+function Foo() {};
+var f1 = new Foo;
+
+// https://www.cnblogs.com/xiaohuochai/p/5721552.html
+// 1. 对象包含__proto__和constructor
+// 2. 函数包含__proto__、constructor和prototype
+
+// fl构造函数指向Foo，f1的proto指向Foo的prototype
+console.log(f1.__proto__ === Foo.prototype);
+
+console.log(f1.constructor === Foo);
+
+console.log(f1.__proto__.constructor === Foo);
+
+console.log(f1.__proto__.__proto__ === Object.prototype);
+
+// 函数的构造函数指向自己
+console.log(Foo.prototype.constructor === Foo);
+
+// Foo继承Object
+console.log(Foo.constructor === Object.constructor);
+
+console.log(Foo.__proto__ === Object.__proto__ );
+
+console.log(Foo.prototype.__proto__ === Object.prototype);
+
+// Object继承Function
+console.log(Object.constructor === Function);
+
+console.log(Object.__proto__ === Function.prototype);
+
+console.log(Foo.__proto__ === Function.prototype);

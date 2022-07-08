@@ -1,0 +1,12 @@
+打开http://gitlab.97kid.com:10080/-/profile/personal_access_tokens
+创建个人的token
+scopes选择read_api
+替换下面的token，然后执行命名
+
+host="gitlab.97kid.com:10080"
+token="你的gitlab access-token，只需要 read_api 权限"
+
+npm config set @qkids-npm:registry "http://${host}/api/v4/packages/npm/" > /dev/null
+npm config set "//${host}/api/v4/packages/npm/:_authToken" "${token}" > /dev/null
+npm config set "//${host}/api/v4/projects/:_authToken" "${token}" > /dev/null
+npm config set custom-host-suffix $host > /dev/null

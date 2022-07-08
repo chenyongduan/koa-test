@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>文件上传</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <input type="file" name="file" id="file" />
+    </div>
+    <script type="text/javascript">
+      const file = document.getElementById("file");
+      const instance = axios.create({
+        withCredentials: false,
+      });
+      file.onchange = function (e) {
+        const f1 = e.target.files[0];
+        const fileData = new FormData();
+        fileData.append("file", f1);
+        instance
+          .post("http://localhost:3000/upload", fileData)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+    </script>
+  </body>
+</html>
